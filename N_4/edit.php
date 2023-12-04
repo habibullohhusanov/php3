@@ -19,6 +19,7 @@
         $_SESSION["succes"] = "Post updated";
 
         header("Location: post.php");
+        exit;
     }
 ?>
 <!DOCTYPE html>

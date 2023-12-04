@@ -19,10 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["DELETE"])) {
     if ($response) {
         $_SESSION["succes"] = "Post deleted";
         header("Location: post.php");
+        exit;
     } else {
         $_SESSION["error"] = "Post deleted";
         header("Location: post.php");
+        exit;
     }
+
 }
 ?>
 <div>

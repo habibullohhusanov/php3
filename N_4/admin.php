@@ -14,6 +14,7 @@
         $_SESSION["succes"] = "Post created";
 
         header("Location: post.php");
+        exit;
     }
 ?>
 <!DOCTYPE html>
