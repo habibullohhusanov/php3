@@ -1,0 +1,558 @@
+Fayl:
+
+$file = 'file.txt';
+$content = file_get_contents($file);
+echo $content;
+
+
+Faylga Ma'lumot Yozish (Write to File):
+
+$file = 'file.txt';
+$content = 'Hello, World!';
+file_put_contents($file, $content);
+
+
+Fayl Uchun Yangi O'qishcha (File Handle):
+
+$file = 'file.txt';
+$handle = fopen($file, 'r'); // 'r' -> o'qish uchun
+$content = fread($handle, filesize($file));
+fclose($handle);
+echo $content;
+
+
+Faylga Ma'lumot Yozish (Append to File):
+
+$file = 'file.txt';
+$content = 'New content to append.';
+file_put_contents($file, $content, FILE_APPEND);
+
+
+Faylni O'qish va Qatorlar Boyicha Massivga Aylantirish (Read File into Array):
+
+$file = 'file.txt';
+$lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+print_r($lines);
+
+
+Faylni O'chirish (Delete File):
+
+$file = 'file.txt';
+unlink($file);
+
+
+Faylning O'lchami (File Size):
+
+$file = 'file.txt';
+$size = filesize($file);
+echo "Fayl o'lchami: $size bayt";
+
+
+Faylni O'qish va Massiv Ko'rinishida Qaytarish:
+
+$file = 'file.txt';
+$lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+print_r($lines);
+
+function readFromFile($filename) {
+    return file_get_contents($filename);
+}
+
+$fileContent = readFromFile('example.txt');
+echo $fileContent;
+
+
+Faylga Ma'lumot Yozish:
+
+function writeToFile($filename, $content) {
+    file_put_contents($filename, $content);
+}
+
+writeToFile('example.txt', 'Hello, World!');
+Faylga Qo'shish:
+
+function appendToFile($filename, $content) {
+    file_put_contents($filename, $content, FILE_APPEND);
+}
+
+appendToFile('example.txt', ' Additional content.');
+
+
+Faylni Massivga Aylantirish:
+
+function readFileToArray($filename) {
+    return file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+}
+
+$lines = readFileToArray('example.txt');
+print_r($lines);
+Faylni O'chirish:
+
+function deleteFile($filename) {
+    unlink($filename);
+}
+
+deleteFile('example.txt');
+Faylni O'lchami:
+
+function getFileSize($filename) {
+    return filesize($filename);
+}
+
+$size = getFileSize('example.txt');
+echo "File size: $size bytes";
+
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+
+strlen() - Satr uzunligini olish:
+
+$str = "Hello, World!";
+$length = strlen($str);
+echo "Satr uzunligi: $length";
+
+
+strpos() - Satr ichida belgi qidirish:
+
+$str = "Hello, World!";
+$position = strpos($str, "World");
+echo "Belgi joylashgan indeks: $position";
+
+
+substr() - Satrni qisqartirish:
+
+$str = "Hello, World!";
+$substring = substr($str, 0, 5);
+echo "Qisqa satr: $substring";
+str_replace() - Satrdagi belgilarni almashtirish:
+
+$str = "Hello, World!";
+$newStr = str_replace("World", "PHP", $str);
+echo "Yangi satr: $newStr";
+
+
+strtolower() - Satrni kichik harflarga aylantirish:
+
+$str = "Hello, World!";
+$lowercase = strtolower($str);
+echo "Kichik harflar bilan: $lowercase";
+
+
+strtoupper() - Satrni katta harflarga aylantirish:
+
+$str = "Hello, World!";
+$uppercase = strtoupper($str);
+echo "Katta harflar bilan: $uppercase";
+
+
+trim() - Satrning bosh va oxiridagi bo'sh joylarni olib tashlash:
+
+$str = "   Hello, World!   ";
+$trimmed = trim($str);
+echo "Olib tashlangan satr: $trimmed";
+
+
+explode() - Satrni massivga ajratish:
+
+$str = "Apple, Banana, Orange";
+$fruits = explode(", ", $str);
+print_r($fruits);
+
+
+implode() - Massiv elementlarini bir-biriga ulashtrish:
+
+$fruits = ["Apple", "Banana", "Orange"];
+$str = implode(", ", $fruits);
+echo "Satr: $str";
+
+
+htmlspecialchars() - HTML belgilarni ko'rib chiqarish:
+
+$html = "<p>Hello, World!</p>";
+$escapedHtml = htmlspecialchars($html);
+echo "HTML kodlaridan o'tgan satr: $escapedHtml";
+
+
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+
+Matn (String) filterlari:
+
+
+FILTER_SANITIZE_STRING: Matnni ishora qilish uchun foydalaniladi.
+FILTER_SANITIZE_SPECIAL_CHARS: Matndagi maxsus belgilar (<, >, &, va boshqalar)ni HTML-entitilariga o'zgartiradi.
+
+$cleanString = filter_var($dirtyString, FILTER_SANITIZE_STRING);
+Son (Integer) va Noto'g'ri Qiymatlar:
+
+
+FILTER_VALIDATE_INT: Sonlarni tekshiradi.
+FILTER_VALIDATE_FLOAT: Qoldiqni yoki desyatinni qabul qiladigan sonlarni tekshiradi.
+
+$integerValue = filter_var($rawValue, FILTER_VALIDATE_INT);
+$floatValue = filter_var($rawValue, FILTER_VALIDATE_FLOAT);
+E-mail manzillari:
+
+
+FILTER_VALIDATE_EMAIL: E-mail manzillarini tekshiradi.
+
+$email = filter_var($rawEmail, FILTER_VALIDATE_EMAIL);
+URL manzillari:
+
+
+FILTER_VALIDATE_URL: URL manzillarini tekshiradi.
+
+$url = filter_var($rawUrl, FILTER_VALIDATE_URL);
+IP manzillari:
+
+
+FILTER_VALIDATE_IP: IP manzillarini tekshiradi.
+
+$ip = filter_var($rawIp, FILTER_VALIDATE_IP);
+
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+
+count() - Massivning elementlar sonini olish:
+
+$arr = [1, 2, 3, 4, 5];
+$count = count($arr);
+echo "Massiv elementlar soni: $count";
+
+
+array_push() - Massiv oxiriga yangi element qo'shish:
+
+$arr = [1, 2, 3];
+array_push($arr, 4);
+print_r($arr);
+
+
+array_pop() - Massivning oxiridagi elementni olish:
+
+$arr = [1, 2, 3, 4];
+$lastElement = array_pop($arr);
+echo "Oxirgi element: $lastElement";
+
+
+array_shift() - Massivning boshidagi elementni olish:
+
+$arr = [1, 2, 3, 4];
+$firstElement = array_shift($arr);
+echo "Birinchi element: $firstElement";
+
+
+array_unshift() - Massivning boshiga yangi element qo'shish:
+
+$arr = [2, 3, 4];
+array_unshift($arr, 1);
+print_r($arr);
+
+
+array_slice() - Massivning qismi (subset)ni olish:
+
+$arr = [1, 2, 3, 4, 5];
+$subset = array_slice($arr, 2, 2);
+print_r($subset);
+
+
+array_merge() - Ikki yoki undan ko'p massivni birlashtirish:
+
+$arr1 = [1, 2, 3];
+$arr2 = [4, 5, 6];
+$mergedArray = array_merge($arr1, $arr2);
+print_r($mergedArray);
+
+
+array_reverse() - Massivni aks ettirish:
+
+$arr = [1, 2, 3, 4, 5];
+$reversedArray = array_reverse($arr);
+print_r($reversedArray);
+
+
+array_search() - Elementni massivda qidirish:
+
+$arr = [1, 2, 3, 4, 5];
+$key = array_search(3, $arr);
+echo "3 qiymati indeksi: $key";
+
+
+array_keys() - Massivdagi barcha indekslarni olish:
+
+$arr = ["apple" => "fruit", "carrot" => "vegetable", "tomato" => "vegetable"];
+$keys = array_keys($arr);
+print_r($keys);
+
+
+array_values() - Massivdagi barcha qiymatlarni olish:
+
+$arr = ["apple" => "fruit", "carrot" => "vegetable", "tomato" => "vegetable"];
+$values = array_values($arr);
+print_r($values);
+
+in_array() - Elementning massivda borligini tekshirish:
+
+$arr = [1, 2, 3, 4, 5];
+$isInArray = in_array(3, $arr);
+echo "3 massivda borligi: " . ($isInArray ? "Ha" : "Yo'q");
+
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+
+abs() - Raqamning modulini olish:
+
+$num = -5;
+$absoluteValue = abs($num);
+echo "Modul: $absoluteValue";
+
+
+sqrt() - Raqamning ildizini olish:
+
+$num = 25;
+$squareRoot = sqrt($num);
+echo "Ildiz: $squareRoot";
+
+
+pow() - Raqamni darajaga oshirish:
+
+$base = 2;
+$exponent = 3;
+$result = pow($base, $exponent);
+echo "Natija: $result";
+
+
+round() - Raqamni yaqin butun soniga yaxlitlash:
+
+$num = 5.8;
+$rounded = round($num);
+echo "Yaqtin soni: $rounded";
+
+
+ceil() - Raqamni yuqori yaqin butun soniga yaxlitlash:
+
+$num = 5.1;
+$ceiled = ceil($num);
+echo "Yuqori yaqtin soni: $ceiled";
+
+
+floor() - Raqamni pastki yaqin butun soniga yaxlitlash:
+
+$num = 5.9;
+$floored = floor($num);
+echo "Pastki yaqtin soni: $floored";
+
+
+rand() - Tasodifiy son olish:
+
+$randomNumber = rand(1, 100);
+echo "Tasodifiy son: $randomNumber";
+
+
+min() - Massiv yoki argumentlar orasidagi eng kichik sonni topish:
+
+$minNumber = min(3, 7, 1, 5);
+echo "Eng kichik son: $minNumber";
+
+
+max() - Massiv yoki argumentlar orasidagi eng katta sonni topish:
+
+$maxNumber = max(3, 7, 1, 5);
+echo "Eng katta son: $maxNumber";
+
+
+number_format() - Raqamni formatga o'tkazib chiqarish:
+
+$num = 1234567.89;
+$formattedNumber = number_format($num, 2, ',', ' ');
+echo "Formatlangan raqam: $formattedNumber";
+
+
+sin(), cos(), tan() - Trigonometrik funksiyalar:
+
+$angle = 45; // daraja
+$sinValue = sin(deg2rad($angle));
+$cosValue = cos(deg2rad($angle));
+$tanValue = tan(deg2rad($angle));
+echo "sin: $sinValue, cos: $cosValue, tan: $tanValue";
+
+
+log() - Raqamning natural logarifmini olish:
+
+$num = 10;
+$naturalLog = log($num);
+echo "Natural logarifm: $naturalLog";
+
+
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+
+GET So'rov:
+
+function getApiData($url) {
+    $curl = curl_init($url);
+
+    // So'rovni bajarish uchun parametrlar
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    // So'rovni yuborish
+    $response = curl_exec($curl);
+
+    // Xatolikni tekshirish
+    if ($response === false) {
+        die('Error: ' . curl_error($curl));
+    }
+
+    // So'rovni tugatish
+    curl_close($curl);
+
+    return $response;
+}
+
+$apiUrl = 'https://api.example.com/data';
+$apiData = getApiData($apiUrl);
+
+// Qabul qilingan ma'lumotni ishlatish
+echo "API javobi: $apiData";
+
+
+POST So'rov:
+
+
+function postApiData($url, $postData) {
+    $curl = curl_init($url);
+
+    // POST so'rovnini belgilash
+    curl_setopt($curl, CURLOPT_POST, true);
+
+    // POST ma'lumotlari
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
+
+    // So'rovni bajarish uchun parametrlar
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    // So'rovni yuborish
+    $response = curl_exec($curl);
+
+    // Xatolikni tekshirish
+    if ($response === false) {
+        die('Error: ' . curl_error($curl));
+    }
+
+    // So'rovni tugatish
+    curl_close($curl);
+
+    return $response;
+}
+
+$apiUrl = 'https://api.example.com/post-endpoint';
+$postData = array('key1' => 'value1', 'key2' => 'value2');
+
+$apiResponse = postApiData($apiUrl, $postData);
+
+// Qabul qilingan ma'lumotni ishlatish
+echo "API javobi: $apiResponse";
+
+
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+
+json_encode:
+Bu funksiya PHP obyektlarini JSON formatiga o'girish uchun ishlatiladi.
+
+$data = array("name" => "John", "age" => 30, "city" => "New York");
+$json = json_encode($data);
+echo $json;
+json_decode:
+
+
+Bu funksiya esa JSON formatidagi ma'lumotlarni PHP obyektlariga o'girish uchun ishlatiladi.
+
+$json = '{"name":"John","age":30,"city":"New York"}';
+$data = json_decode($json);
+print_r($data);
+json_last_error:
+
+
+Ushbu funksiya JSON xatoliklarni qaytaradi.
+
+$json = '{"name":"John","age":30,"city":"New York"}';
+json_decode($json);
+if (json_last_error() != JSON_ERROR_NONE) {
+    echo 'Error decoding JSON: ' . json_last_error_msg();
+}
+json_last_error_msg:
+
+
+Ushbu funksiya esa JSON xatolik xabarini qaytaradi.
+
+$json = '{"name":"John","age":30,"city":"New York"}';
+json_decode($json);
+echo json_last_error_msg();
+
+
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+<-------------------------------------------------------------->
+
+HTTP Murojaatlarini Boshqarish:
+RESTful API-da foydalanuvchilar va sistemalar orasidagi murojaatlar keng qo'llaniladi. $_GET, $_POST, $_PUT, $_DELETE va boshqa
+superglobal massivlari orqali ma'lumotlarni qabul qilish mumkin.
+
+// Misol: GET so'rovi
+$id = $_GET['id'];
+echo "Get resource with ID: $id";
+
+
+HTTP Status Kodinglari:
+HTTP status kodinglarini ishlatish orqali muvaffaqiyatsiz so'rovlar yoki hato haqida ma'lumot berish mumkin.
+
+header("HTTP/1.1 404 Not Found");
+echo "Resource not found!";
+
+
+JSON Ma'lumotlarni Qaytarish:
+RESTful API-da ma'lumotlar ko'p o'qish uchun keng qo'llaniladi. Ma'lumotlarni JSON formatida qaytarish uchun json_encode funksiyasi ishlatiladi.
+
+$data = array("name" => "John", "age" => 30, "city" => "New York");
+header('Content-Type: application/json');
+echo json_encode($data);
+
+
+Router (Yo'nalishlangan so'rovlarni boshqarish):
+RESTful API-da foydalanuvchilar tomonidan yuborilgan so'rovlarni boshqarish uchun yo'nalishlarni boshqarishda router ishlatish keng qo'llaniladi.
+
+// Misol: Router
+$method = $_SERVER['REQUEST_METHOD'];
+$path = $_SERVER['REQUEST_URI'];
+
+if ($method == 'GET' && $path == '/api/users') {
+    // ...
+}
+
+
+Middleware (Ortga ishlovchi funksiyalar):
+Middleware funksiyalari, so'rovni qabul qilish va uni boshqarish jarayonida boshqa funksiyalarni qo'shish uchun ishlatiladi.
+
+function authenticationMiddleware() {
+    // Foydalanuvchini tekshirish
+}
+
+function loggingMiddleware() {
+    // So'rov va natijalarni registratsiya qilish
+}
+
+
+RESTful API-ni Versiyalash:
+API-ni versiyalash orqali, o'zgarishlarni to'g'riroq boshqarish va foydalanuvchilarga qayta qanday qo'llanilishi kerakligini aytish mumkin.
+
+// API versiyasi
+$version = "v1";
+
+// Endpoint URL
+$url = "/api/$version/users";
